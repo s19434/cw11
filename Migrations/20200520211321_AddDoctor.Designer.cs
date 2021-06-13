@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APBD.Migrations
 {
     [DbContext(typeof(PrescriptionDbContext))]
-    [Migration("20200518091319_AddDoctor")]
-    partial class AddDoctor
+    [Migration("20200518091319_AddTrener")]
+    partial class AddTrener
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,9 +20,9 @@ namespace APBD.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("APBD.Models.Doctor", b =>
+            modelBuilder.Entity("APBD.Models.Trener", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -36,9 +36,9 @@ namespace APBD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Treners");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,12 +2,12 @@
 
 namespace APBD.Migrations
 {
-    public partial class AddMedicament : Migration
+    public partial class AddProgram: Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Medicaments",
+                name: "Uwagi",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -34,14 +34,14 @@ namespace APBD.Migrations
                     table.ForeignKey(
                         name: "FK_PrescriptionMedicament_Medicaments_MedicamentId",
                         column: x => x.MedicamentId,
-                        principalTable: "Medicaments",
-                        principalColumn: "IdDoctor",
+                        principalTable: "Uwagi",
+                        principalColumn: "IdTrener",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PrescriptionMedicament_Prescriptions_PrescriptionId",
+                        name: "FK_PrescriptionMedicament_Programs_PrescriptionId",
                         column: x => x.PrescriptionId,
-                        principalTable: "Prescriptions",
-                        principalColumn: "IdDoctor",
+                        principalTable: "Programs",
+                        principalColumn: "IdTrener",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -57,7 +57,7 @@ namespace APBD.Migrations
                 name: "Prescription_Medicament");
 
             migrationBuilder.DropTable(
-                name: "Medicaments");
+                name: "Uwagi");
         }
     }
 }

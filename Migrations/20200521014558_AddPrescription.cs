@@ -3,41 +3,41 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APBD.Migrations
 {
-    public partial class AddPrescription : Migration
+    public partial class AddProgram: Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Prescriptions",
+                name: "Programs",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(nullable: false),
                     DueDate = table.Column<DateTime>(nullable: false),
-                    DoctorId = table.Column<int>(nullable: true)
+                    TrenerId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Prescriptions", x => x.Id);
+                    table.PrimaryKey("PK_Programs", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Prescriptions_Doctors_DoctorId",
-                        column: x => x.DoctorId,
-                        principalTable: "Doctors",
-                        principalColumn: "IdDoctor",
+                        name: "FK_Programs_Treners_TrenerId",
+                        column: x => x.TrenerId,
+                        principalTable: "Treners",
+                        principalColumn: "IdTrener",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prescriptions_DoctorId",
-                table: "Prescriptions",
-                column: "IdDoctor");
+                name: "IX_Programs_TrenerId",
+                table: "Programs",
+                column: "IdTrener");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Prescriptions");
+                name: "Programs");
         }
     }
 }

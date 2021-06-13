@@ -21,9 +21,9 @@ namespace APBD.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("APBD.Models.Doctor", b =>
+            modelBuilder.Entity("APBD.Models.Trener", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -37,14 +37,14 @@ namespace APBD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Treners");
                 });
 
-            modelBuilder.Entity("APBD.Models.Prescription", b =>
+            modelBuilder.Entity("APBD.Models.Program", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -52,30 +52,30 @@ namespace APBD.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("IdDoctor")
+                    b.Property<int?>("IdTrener")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPatient")
+                    b.Property<int>("IdKlient")
                         .HasColumnType("int");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.HasIndex("IdDoctor");
+                    b.HasIndex("IdTrener");
 
-                    b.ToTable("Prescriptions");
+                    b.ToTable("Programs");
                 });
 
-            modelBuilder.Entity("APBD.Models.Prescription", b =>
+            modelBuilder.Entity("APBD.Models.Program", b =>
                 {
-                    b.HasOne("APBD.Models.Doctor", "Doctor")
-                        .WithMany("Prescriptions")
-                        .HasForeignKey("IdDoctor");
+                    b.HasOne("APBD.Models.Trener", "Trener")
+                        .WithMany("Programs")
+                        .HasForeignKey("IdTrener");
                 });
 #pragma warning restore 612, 618
         }

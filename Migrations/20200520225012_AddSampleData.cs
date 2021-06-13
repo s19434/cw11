@@ -8,8 +8,8 @@ namespace APBD.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
-                table: "Doctors",
-                columns: new[] { "IdDoctor", "Email", "FirstName", "LastName" },
+                table: "Treners",
+                columns: new[] { "IdTrener", "Email", "FirstName", "LastName" },
                 values: new object[,]
                 {
                     { 1, "j@k.pl", "Jan", "Kowalski" },
@@ -18,8 +18,8 @@ namespace APBD.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Medicaments",
-                columns: new[] { "IdDoctor", "Description", "Name", "Type" },
+                table: "Uwagi",
+                columns: new[] { "IdTrener", "Description", "Opis", "Type" },
                 values: new object[,]
                 {
                     { 1, "na bol", "apap", "lek" },
@@ -28,8 +28,8 @@ namespace APBD.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Patients",
-                columns: new[] { "IdDoctor", "BirthDate", "FirstName", "LastName" },
+                table: "Klients",
+                columns: new[] { "IdTrener", "BirthDate", "FirstName", "LastName" },
                 values: new object[,]
                 {
                     { 1, new DateTime(1999, 12, 12, 0, 0, 0, 0, DateTimeKind.Unspecified), "Ania", "Kowalewska" },
@@ -38,18 +38,18 @@ namespace APBD.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Prescriptions",
-                columns: new[] { "IdDoctor", "Date", "IdDoctor", "DueDate", "IdPatient" },
+                table: "Programs",
+                columns: new[] { "IdTrener", "Date", "IdTrener", "DueDate", "IdKlient" },
                 values: new object[] { 3, new DateTime(2020, 5, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2980), 3, new DateTime(2020, 6, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2990), 1 });
 
             migrationBuilder.InsertData(
-                table: "Prescriptions",
-                columns: new[] { "IdDoctor", "Date", "IdDoctor", "DueDate", "IdPatient" },
+                table: "Programs",
+                columns: new[] { "IdTrener", "Date", "IdTrener", "DueDate", "IdKlient" },
                 values: new object[] { 2, new DateTime(2020, 5, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2940), 2, new DateTime(2020, 6, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2960), 2 });
 
             migrationBuilder.InsertData(
-                table: "Prescriptions",
-                columns: new[] { "IdDoctor", "Date", "IdDoctor", "DueDate", "IdPatient" },
+                table: "Programs",
+                columns: new[] { "IdTrener", "Date", "IdTrener", "DueDate", "IdKlient" },
                 values: new object[] { 1, new DateTime(2020, 5, 18, 12, 34, 10, 975, DateTimeKind.Local).AddTicks(120), 1, new DateTime(2020, 6, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(1860), 3 });
 
             migrationBuilder.InsertData(
@@ -86,63 +86,63 @@ namespace APBD.Migrations
                 keyValues: new object[] { 3, 1 });
 
             migrationBuilder.DeleteData(
-                table: "Medicaments",
-                keyColumn: "IdDoctor",
+                table: "Uwagi",
+                keyColumn: "IdTrener",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "Medicaments",
-                keyColumn: "IdDoctor",
+                table: "Uwagi",
+                keyColumn: "IdTrener",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "Medicaments",
-                keyColumn: "IdDoctor",
+                table: "Uwagi",
+                keyColumn: "IdTrener",
                 keyValue: 3);
 
             migrationBuilder.DeleteData(
-                table: "Prescriptions",
-                keyColumn: "IdDoctor",
+                table: "Programs",
+                keyColumn: "IdTrener",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "Prescriptions",
-                keyColumn: "IdDoctor",
+                table: "Programs",
+                keyColumn: "IdTrener",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "Prescriptions",
-                keyColumn: "IdDoctor",
+                table: "Programs",
+                keyColumn: "IdTrener",
                 keyValue: 3);
 
             migrationBuilder.DeleteData(
-                table: "Doctors",
-                keyColumn: "IdDoctor",
+                table: "Treners",
+                keyColumn: "IdTrener",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "Doctors",
-                keyColumn: "IdDoctor",
+                table: "Treners",
+                keyColumn: "IdTrener",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "Doctors",
-                keyColumn: "IdDoctor",
+                table: "Treners",
+                keyColumn: "IdTrener",
                 keyValue: 3);
 
             migrationBuilder.DeleteData(
-                table: "Patients",
-                keyColumn: "IdDoctor",
+                table: "Klients",
+                keyColumn: "IdTrener",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "Patients",
-                keyColumn: "IdDoctor",
+                table: "Klients",
+                keyColumn: "IdTrener",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "Patients",
-                keyColumn: "IdDoctor",
+                table: "Klients",
+                keyColumn: "IdTrener",
                 keyValue: 3);
         }
     }

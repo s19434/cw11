@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace APBD.Migrations
 {
     [DbContext(typeof(PrescriptionDbContext))]
-    [Migration("20200518095414_AddPatient")]
-    partial class AddPatient
+    [Migration("20200518095414_AddKlient")]
+    partial class AddKlient
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,9 +21,9 @@ namespace APBD.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("APBD.Models.Doctor", b =>
+            modelBuilder.Entity("APBD.Models.Trener", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -37,14 +37,14 @@ namespace APBD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Treners");
                 });
 
-            modelBuilder.Entity("APBD.Models.Patient", b =>
+            modelBuilder.Entity("APBD.Models.Klient", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -58,14 +58,14 @@ namespace APBD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Klients");
                 });
 
-            modelBuilder.Entity("APBD.Models.Prescription", b =>
+            modelBuilder.Entity("APBD.Models.Program", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -73,35 +73,35 @@ namespace APBD.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdPatient")
+                    b.Property<int>("IdKlient")
                         .HasColumnType("int");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.HasIndex("IdDoctor");
+                    b.HasIndex("IdTrener");
 
-                    b.HasIndex("IdPatient");
+                    b.HasIndex("IdKlient");
 
-                    b.ToTable("Prescriptions");
+                    b.ToTable("Programs");
                 });
 
-            modelBuilder.Entity("APBD.Models.Prescription", b =>
+            modelBuilder.Entity("APBD.Models.Program", b =>
                 {
-                    b.HasOne("APBD.Models.Doctor", "Doctor")
-                        .WithMany("Prescriptions")
-                        .HasForeignKey("IdDoctor")
+                    b.HasOne("APBD.Models.Trener", "Trener")
+                        .WithMany("Programs")
+                        .HasForeignKey("IdTrener")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("APBD.Models.Patient", "Patient")
-                        .WithMany("Prescriptions")
-                        .HasForeignKey("IdPatient")
+                    b.HasOne("APBD.Models.Klient", "Klient")
+                        .WithMany("Programs")
+                        .HasForeignKey("IdKlient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

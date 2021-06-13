@@ -19,9 +19,9 @@ namespace APBD.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("APBD.Models.Doctor", b =>
+            modelBuilder.Entity("APBD.Models.Trener", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -35,9 +35,9 @@ namespace APBD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.ToTable("Doctors");
+                    b.ToTable("Treners");
 
                     b.HasData(
                         new
@@ -63,9 +63,9 @@ namespace APBD.Migrations
                         });
                 });
 
-            modelBuilder.Entity("APBD.Models.Medicament", b =>
+            modelBuilder.Entity("APBD.Models.Uwaga", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -73,15 +73,15 @@ namespace APBD.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Opis")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.ToTable("Medicaments");
+                    b.ToTable("Uwagi");
 
                     b.HasData(
                         new
@@ -107,9 +107,9 @@ namespace APBD.Migrations
                         });
                 });
 
-            modelBuilder.Entity("APBD.Models.Patient", b =>
+            modelBuilder.Entity("APBD.Models.Klient", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -123,9 +123,9 @@ namespace APBD.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.ToTable("Patients");
+                    b.ToTable("Klients");
 
                     b.HasData(
                         new
@@ -151,9 +151,9 @@ namespace APBD.Migrations
                         });
                 });
 
-            modelBuilder.Entity("APBD.Models.Prescription", b =>
+            modelBuilder.Entity("APBD.Models.Program", b =>
                 {
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -161,47 +161,47 @@ namespace APBD.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdDoctor")
+                    b.Property<int>("IdTrener")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdPatient")
+                    b.Property<int>("IdKlient")
                         .HasColumnType("int");
 
-                    b.HasKey("IdDoctor");
+                    b.HasKey("IdTrener");
 
-                    b.HasIndex("IdDoctor");
+                    b.HasIndex("IdTrener");
 
-                    b.HasIndex("IdPatient");
+                    b.HasIndex("IdKlient");
 
-                    b.ToTable("Prescriptions");
+                    b.ToTable("Programs");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
                             Date = new DateTime(2020, 5, 18, 12, 34, 10, 975, DateTimeKind.Local).AddTicks(120),
-                            DoctorId = 1,
+                            TrenerId = 1,
                             DueDate = new DateTime(2020, 6, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(1860),
-                            PatientId = 3
+                            KlientId = 3
                         },
                         new
                         {
                             Id = 2,
                             Date = new DateTime(2020, 5, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2940),
-                            DoctorId = 2,
+                            TrenerId = 2,
                             DueDate = new DateTime(2020, 6, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2960),
-                            PatientId = 2
+                            KlientId = 2
                         },
                         new
                         {
                             Id = 3,
                             Date = new DateTime(2020, 5, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2980),
-                            DoctorId = 3,
+                            TrenerId = 3,
                             DueDate = new DateTime(2020, 6, 18, 12, 34, 10, 977, DateTimeKind.Local).AddTicks(2990),
-                            PatientId = 1
+                            KlientId = 1
                         });
                 });
 
@@ -237,30 +237,30 @@ namespace APBD.Migrations
                         });
                 });
 
-            modelBuilder.Entity("APBD.Models.Prescription", b =>
+            modelBuilder.Entity("APBD.Models.Program", b =>
                 {
-                    b.HasOne("APBD.Models.Doctor", "Doctor")
-                        .WithMany("Prescriptions")
-                        .HasForeignKey("IdDoctor")
+                    b.HasOne("APBD.Models.Trener", "Trener")
+                        .WithMany("Programs")
+                        .HasForeignKey("IdTrener")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("APBD.Models.Patient", "Patient")
-                        .WithMany("Prescriptions")
-                        .HasForeignKey("IdPatient")
+                    b.HasOne("APBD.Models.Klient", "Klient")
+                        .WithMany("Programs")
+                        .HasForeignKey("IdKlient")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("APBD.Models.Prescription_Medicament", b =>
                 {
-                    b.HasOne("APBD.Models.Medicament", "Medicament")
+                    b.HasOne("APBD.Models.Uwaga", "Uwaga")
                         .WithMany("Prescription_Medicaments")
                         .HasForeignKey("IdMedicament")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("APBD.Models.Prescription", "Prescription")
+                    b.HasOne("APBD.Models.Program", "Program")
                         .WithMany("Prescription_Medicaments")
                         .HasForeignKey("IdPrescription")
                         .OnDelete(DeleteBehavior.Cascade)

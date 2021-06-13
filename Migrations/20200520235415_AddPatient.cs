@@ -3,30 +3,30 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace APBD.Migrations
 {
-    public partial class AddPatient : Migration
+    public partial class AddKlient : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Prescriptions_Doctors_DoctorId",
-                table: "Prescriptions");
+                name: "FK_Programs_Treners_TrenerId",
+                table: "Programs");
 
             migrationBuilder.AlterColumn<int>(
-                name: "IdDoctor",
-                table: "Prescriptions",
+                name: "IdTrener",
+                table: "Programs",
                 nullable: false,
                 oldClrType: typeof(int),
                 oldType: "int",
                 oldNullable: true);
 
             migrationBuilder.AddColumn<int>(
-                name: "IdPatient",
-                table: "Prescriptions",
+                name: "IdKlient",
+                table: "Programs",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.CreateTable(
-                name: "Patients",
+                name: "Klients",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -37,79 +37,79 @@ namespace APBD.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Patients", x => x.Id);
+                    table.PrimaryKey("PK_Klients", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Prescriptions_PatientId",
-                table: "Prescriptions",
-                column: "IdPatient");
+                name: "IX_Programs_KlientId",
+                table: "Programs",
+                column: "IdKlient");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Prescriptions_Doctors_DoctorId",
-                table: "Prescriptions",
-                column: "IdDoctor",
-                principalTable: "Doctors",
-                principalColumn: "IdDoctor",
+                name: "FK_Programs_Treners_TrenerId",
+                table: "Programs",
+                column: "IdTrener",
+                principalTable: "Treners",
+                principalColumn: "IdTrener",
                 onDelete: ReferentialAction.Cascade);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Prescriptions_Patients_PatientId",
-                table: "Prescriptions",
-                column: "IdPatient",
-                principalTable: "Patients",
-                principalColumn: "IdDoctor",
+                name: "FK_Programs_Klients_KlientId",
+                table: "Programs",
+                column: "IdKlient",
+                principalTable: "Klients",
+                principalColumn: "IdTrener",
                 onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Prescriptions_Doctors_DoctorId",
-                table: "Prescriptions");
+                name: "FK_Programs_Treners_TrenerId",
+                table: "Programs");
 
             migrationBuilder.DropForeignKey(
-                name: "FK_Prescriptions_Patients_PatientId",
-                table: "Prescriptions");
+                name: "FK_Programs_Klients_KlientId",
+                table: "Programs");
 
             migrationBuilder.DropTable(
-                name: "Patients");
+                name: "Klients");
 
             migrationBuilder.DropIndex(
-                name: "IX_Prescriptions_PatientId",
-                table: "Prescriptions");
+                name: "IX_Programs_KlientId",
+                table: "Programs");
 
             migrationBuilder.DropColumn(
-                name: "IdPatient",
-                table: "Prescriptions");
+                name: "IdKlient",
+                table: "Programs");
 
             migrationBuilder.AlterColumn<int>(
-                name: "IdDoctor",
-                table: "Prescriptions",
+                name: "IdTrener",
+                table: "Programs",
                 type: "int",
                 nullable: true,
                 oldClrType: typeof(int));
 
             migrationBuilder.AddColumn<int>(
-                name: "IdDoctor",
-                table: "Prescriptions",
+                name: "IdTrener",
+                table: "Programs",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddColumn<int>(
-                name: "IdPatient",
-                table: "Prescriptions",
+                name: "IdKlient",
+                table: "Programs",
                 type: "int",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Prescriptions_Doctors_DoctorId",
-                table: "Prescriptions",
-                column: "IdDoctor",
-                principalTable: "Doctors",
-                principalColumn: "IdDoctor",
+                name: "FK_Programs_Treners_TrenerId",
+                table: "Programs",
+                column: "IdTrener",
+                principalTable: "Treners",
+                principalColumn: "IdTrener",
                 onDelete: ReferentialAction.Restrict);
         }
     }

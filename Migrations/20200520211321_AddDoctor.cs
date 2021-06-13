@@ -2,12 +2,12 @@
 
 namespace APBD.Migrations
 {
-    public partial class AddDoctor : Migration
+    public partial class AddTrener : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Doctors",
+                name: "Treners",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
@@ -18,14 +18,14 @@ namespace APBD.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Doctors", x => x.Id);
+                    table.PrimaryKey("PK_Treners", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Doctors");
+                name: "Treners");
         }
     }
 }
