@@ -80,8 +80,8 @@ namespace APBD.Controllers
             return response;
         }
 
-        [HttpGet("all/sort/name/client")]
-        public IActionResult GetTClientsSortByNameClient()
+        [HttpGet("all/sort/name")]
+        public IActionResult GetTClientsSortByName()
         {
             IActionResult response;
             try
@@ -112,8 +112,8 @@ namespace APBD.Controllers
         }
 
 
-        [HttpGet("all/sort/age/client")]
-        public IActionResult GetTClientsSortByAgeClient()
+        [HttpGet("all/sort/age")]
+        public IActionResult GetTClientsSortByAge()
         {
             IActionResult response;
             try
