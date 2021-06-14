@@ -9,19 +9,19 @@ namespace APBD.Controllers
 {
     [Route("api/programs")]
     [ApiController]
-    public class TrenersController : ControllerBase
+    public class ProgramsController : ControllerBase
     {
 
 
         private readonly GymDbContext _context;
 
-        public TrenersController(GymDbContext context)
+        public ProgramsController(GymDbContext context)
         {
             _context = context;
         }
 
         [HttpGet("{index}")]
-        public IActionResult GetTrener(int index)
+        public IActionResult GetProgram(int index)
         {
             IActionResult response;
             try
@@ -107,7 +107,7 @@ namespace APBD.Controllers
 
         }
 
-                [HttpGet("all/sort/name/trainer")]
+        [HttpGet("all/sort/name/trainer")]
         public IActionResult GetProgramsSortByNameTrainer()
         {
             IActionResult response;
@@ -135,6 +135,7 @@ namespace APBD.Controllers
             return response;
 
         }
+
 
 
 
