@@ -20,9 +20,9 @@ namespace APBD
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PrescriptionDbContext>(options =>
+            services.AddDbContext<GymDbContext>(options =>
             {
-                options.UseSqlServer(Environment.GetEnvironmentVariable("DB_Source"));
+                options.UseSqlServer("Data Source=db-mssql;Initial Catalog=s19434;Integrated Security=True");
             });
             services.AddControllers();
         }

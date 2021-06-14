@@ -9,9 +9,9 @@ namespace APBD.Controllers
     [ApiController]
     public class TrenersController : ControllerBase
     {
-        private readonly PrescriptionDbContext _context;
+        private readonly GymDbContext _context;
 
-        public TrenersController(PrescriptionDbContext context)
+        public TrenersController(GymDbContext context)
         {
             _context = context;
         }

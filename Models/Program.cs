@@ -11,11 +11,11 @@ namespace APBD.Models
 
         public int IdKlient { get; set; }
         public int IdTrener { get; set; }
-        public int IdUwagi { get; set; }
+        public int IdUwaga { get; set; }
 
         public virtual Klient Klient { get; set; }
         public virtual Trener Trener { get; set; }
-        public virtual Uwaga Uwagi { get; set; }
+        public virtual Uwaga Uwaga { get; set; }
 
     }
 }

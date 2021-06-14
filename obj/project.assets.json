@@ -5006,11 +5006,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vera\\Desktop\\APBD_prescription-master\\APBD.csproj",
+      "projectUniqueName": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\APBD.csproj",
       "projectName": "APBD",
-      "projectPath": "C:\\Users\\Vera\\Desktop\\APBD_prescription-master\\APBD.csproj",
+      "projectPath": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\APBD.csproj",
       "packagesPath": "C:\\Users\\Vera\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Vera\\Desktop\\APBD_prescription-master\\obj\\",
+      "outputPath": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Vera\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5025,6 +5025,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -5036,6 +5037,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",
@@ -5068,7 +5070,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }
