@@ -1,6 +1,8 @@
 using System;
 using System.Linq;
 using APBD.Models;
+using APBD.Response;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace APBD.Controllers
@@ -9,6 +11,8 @@ namespace APBD.Controllers
     [ApiController]
     public class TrenersController : ControllerBase
     {
+
+
         private readonly GymDbContext _context;
 
         public TrenersController(GymDbContext context)
@@ -16,13 +20,16 @@ namespace APBD.Controllers
             _context = context;
         }
 
-        [HttpGet("get/{index}")]
+        [HttpGet("{index}")]
         public IActionResult GetTrener(int index)
         {
             IActionResult response;
             try
             {
-                response = Ok(_context.Treners.First(Trener => Trener.IdTrener == index));
+                response = Ok(_context.Treners
+                    .First(Trener => Trener.IdTrener == index)
+
+                    );
             }
             catch (Exception exc)
             {
@@ -33,59 +40,35 @@ namespace APBD.Controllers
 
         }
 
-        [HttpPost("add")]
-        public IActionResult AddTrener(Trener Trener)
-
+        [HttpGet("all")]
+        public IActionResult GetTreners()
         {
             IActionResult response;
             try
             {
-                _context.Treners.Add(Trener);
-                _context.SaveChanges();
-
-                response = Ok(Trener);
+                response = Ok(_context.Programs.Select(pro => new GetListOfPrograms
+                {
+                    OpisProgramu = pro.Dane,
+                    OcenaProgramu = pro.Ocena,
+                    ImieKlienta = pro.Klient.FirstName,
+                    NazwiskoKlienta = pro.Klient.LastName,
+                    TelefonKlienta = pro.Klient.Telefon,
+                    ImieTrenera = pro.Trener.FirstName,
+                    NazwiskoTrenera = pro.Trener.LastName,
+                    TelefonTrenera = pro.Trener.Telefon,
+                    OpisUwag = pro.Uwaga.Opis
+                }).ToList());
             }
             catch (Exception exc)
             {
-                response = BadRequest("ERROR with adding Trener" + exc.StackTrace);
+                response = BadRequest("ERROR with geting Trener" + exc.StackTrace);
             }
 
             return response;
+
         }
 
-        [HttpPut("modify")]
-        public IActionResult ModifyTrener(Trener Trener)
-        {
-            IActionResult response;
-            try
-            {
-                _context.Treners.Update(Trener);
-                _context.SaveChanges();
-                response = Ok(Trener);
-            }
-            catch (Exception exc)
-            {
-                response = BadRequest("ERROR with modifying Trener" + exc.StackTrace);
-            }
-            return response;
-        }
 
-        [HttpDelete("delete/{index}")]
-        public IActionResult DeleteTrener(int index)
-        {
-            IActionResult response;
-            try
-            {
-                var Trener = _context.Treners.First(doc => doc.IdTrener == index);
-                _context.Treners.Remove(Trener);
-                _context.SaveChanges();
-            }
-            catch (Exception exc)
-            {
-                response = BadRequest("ERROR with deleting Trener" + exc.StackTrace);
-            }
-            return NoContent();
-        }
 
     }
 }
