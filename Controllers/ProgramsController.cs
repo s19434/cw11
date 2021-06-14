@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APBD.Controllers
 {
-    [Route("api/programs")]
+    [Route("api/program")]
     [ApiController]
     public class ProgramsController : ControllerBase
     {

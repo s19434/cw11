@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/Treners",
+      "launchUrl": "api/",
       "environmentVariables": {
         "DB_Source": "Data Source=db-mssql;Initial Catalog=s19434;Integrated Security=True",
         "ASPNETCORE_ENVIRONMENT": "Development"

@@ -5006,9 +5006,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\APBD.csproj",
-      "projectName": "APBD",
-      "projectPath": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\APBD.csproj",
+      "projectUniqueName": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\GYM.csproj",
+      "projectName": "GYM",
+      "projectPath": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\GYM.csproj",
       "packagesPath": "C:\\Users\\Vera\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Vera\\Source\\Repos\\s19434\\cw11\\obj\\",
       "projectStyle": "PackageReference",
