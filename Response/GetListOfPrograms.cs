@@ -8,7 +8,7 @@ namespace APBD.Response
 {
     public class GetListOfPrograms
     {
-        
+        public int IdProgram { get; set; }
         public string OpisProgramu { get; set; }
         public int OcenaProgramu { get; set; }
 

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APBD.Controllers
 {
-    [Route("api/Treners")]
+    [Route("api/programs")]
     [ApiController]
     public class TrenersController : ControllerBase
     {
@@ -26,14 +26,23 @@ namespace APBD.Controllers
             IActionResult response;
             try
             {
-                response = Ok(_context.Treners
-                    .First(Trener => Trener.IdTrener == index)
-
-                    );
+                response = Ok(_context.Programs.Select(pro => new GetListOfPrograms
+                {
+                    IdProgram = pro.IdProgram,
+                    OpisProgramu = pro.Dane,
+                    OcenaProgramu = pro.Ocena,
+                    ImieKlienta = pro.Klient.FirstName,
+                    NazwiskoKlienta = pro.Klient.LastName,
+                    TelefonKlienta = pro.Klient.Telefon,
+                    ImieTrenera = pro.Trener.FirstName,
+                    NazwiskoTrenera = pro.Trener.LastName,
+                    TelefonTrenera = pro.Trener.Telefon,
+                    OpisUwag = pro.Uwaga.Opis ?? "Uwag nie ma od klienta"
+                }).Where(Program => Program.IdProgram == index));
             }
-            catch (Exception exc)
+            catch (ArgumentNullException e)
             {
-                response = BadRequest("ERROR with geting Trener" + exc.StackTrace);
+                response = NotFound("Nie ma takiego programu" + e.Message);
             }
 
             return response;
@@ -48,6 +57,7 @@ namespace APBD.Controllers
             {
                 response = Ok(_context.Programs.Select(pro => new GetListOfPrograms
                 {
+                    IdProgram = pro.IdProgram,
                     OpisProgramu = pro.Dane,
                     OcenaProgramu = pro.Ocena,
                     ImieKlienta = pro.Klient.FirstName,
@@ -56,12 +66,70 @@ namespace APBD.Controllers
                     ImieTrenera = pro.Trener.FirstName,
                     NazwiskoTrenera = pro.Trener.LastName,
                     TelefonTrenera = pro.Trener.Telefon,
-                    OpisUwag = pro.Uwaga.Opis
+                    OpisUwag = pro.Uwaga.Opis ?? "Uwag nie ma od klienta"
                 }).ToList());
             }
-            catch (Exception exc)
+            catch (ArgumentNullException e)
             {
-                response = BadRequest("ERROR with geting Trener" + exc.StackTrace);
+                response = NotFound("Nie ma takiego programu" + e.Message);
+            }
+
+            return response;
+
+        }
+
+        [HttpGet("all/sort/name/client")]
+        public IActionResult GetTrenersSortByNameClient()
+        {
+            IActionResult response;
+            try
+            {
+                response = Ok(_context.Programs.Select(pro => new GetListOfPrograms
+                {
+                    IdProgram = pro.IdProgram,
+                    OpisProgramu = pro.Dane,
+                    OcenaProgramu = pro.Ocena,
+                    ImieKlienta = pro.Klient.FirstName,
+                    NazwiskoKlienta = pro.Klient.LastName,
+                    TelefonKlienta = pro.Klient.Telefon,
+                    ImieTrenera = pro.Trener.FirstName,
+                    NazwiskoTrenera = pro.Trener.LastName,
+                    TelefonTrenera = pro.Trener.Telefon,
+                    OpisUwag = pro.Uwaga.Opis ?? "Uwag nie ma od klienta"
+                }).ToList().OrderBy(item => item.ImieKlienta));
+            }
+            catch (ArgumentNullException e)
+            {
+                response = NotFound("Nie ma takiego programu" + e.Message);
+            }
+
+            return response;
+
+        }
+
+                [HttpGet("all/sort/name/trainer")]
+        public IActionResult GetProgramsSortByNameTrainer()
+        {
+            IActionResult response;
+            try
+            {
+                response = Ok(_context.Programs.Select(pro => new GetListOfPrograms
+                {
+                    IdProgram = pro.IdProgram,
+                    OpisProgramu = pro.Dane,
+                    OcenaProgramu = pro.Ocena,
+                    ImieKlienta = pro.Klient.FirstName,
+                    NazwiskoKlienta = pro.Klient.LastName,
+                    TelefonKlienta = pro.Klient.Telefon,
+                    ImieTrenera = pro.Trener.FirstName,
+                    NazwiskoTrenera = pro.Trener.LastName,
+                    TelefonTrenera = pro.Trener.Telefon,
+                    OpisUwag = pro.Uwaga.Opis ?? "Uwag nie ma od klienta"
+                }).ToList().OrderBy(item => item.ImieTrenera));
+            }
+            catch (ArgumentNullException e)
+            {
+                response = NotFound("Nie ma takiego programu" + e.Message);
             }
 
             return response;
